@@ -10,6 +10,9 @@ import Footer from "./components/Footer";
 import AddPersonal from "./Pages/AddPersonal";
 import AddEmergency from "./Pages/AddEmergency";
 import AddLiving from "./Pages/AddLiving";
+import EditEmergency from "./Pages/EditEmergency";
+import EditPersonal from "./Pages/EditPersonal";
+import EditLiving from "./Pages/EditLiving";
 import "./App.css";
 
 function App() {
@@ -26,6 +29,9 @@ function App() {
         <Route path="/AddPersonal" element={<AddPersonal />} />
         <Route path="/AddEmergency" element={<AddEmergency />} />
         <Route path="/addLiving" element={<AddLiving />} />
+        <Route path="/editEmergency" element={<EditEmergency />} />
+        <Route path="/editLiving" element={<EditLiving />} />
+        <Route path="/editPersonal" element={<EditPersonal />} />
       </Routes>
       <Footer />
     </>
