@@ -28,7 +28,7 @@ function Personal() {
     getPersonal();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  console.log(personal);
   return (
     <>
       <div className="personal">
