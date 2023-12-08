@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function AddPersonal() {
+function AddEmergency() {
   const [income, setIncome] = useState("");
   const [outcome, setOutcome] = useState("");
   const [inDate, setInDate] = useState("");
@@ -19,9 +19,8 @@ function AddPersonal() {
       title: title,
     };
     const storedToken = localStorage.getItem("authToken");
-
     axios
-      .post("http://localhost:3000/personal", requestBody, {
+      .post("http://localhost:3000/emergency", requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -94,4 +93,4 @@ function AddPersonal() {
     </div>
   );
 }
-export default AddPersonal;
+export default AddEmergency;
