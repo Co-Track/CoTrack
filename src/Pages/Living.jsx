@@ -40,21 +40,17 @@ function Living() {
 
   useEffect(() => {
     getLiving();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log(living);
+
   return (
     <>
       <div className="living">
         <h1>Living expenses</h1>
-        {Living &&
+        {living &&
           living.map((item, i) => {
             const date = new Date(item.inDate);
-            const dateFormatted = date.toLocaleTimeString(undefined, {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit",
-            });
+            const dateFormatted = date.toDateString();
 
             return (
               <div key={i}>
