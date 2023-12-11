@@ -8,7 +8,7 @@ function Emergency() {
 
     axios
       .get(
-        "http://localhost:3000/personal",
+        "http://localhost:3000/emergency",
 
         {
           headers: { authorization: `Bearer ${token}` },
@@ -20,19 +20,19 @@ function Emergency() {
       })
       .catch((error) => {
         console.log(error);
-      });}
-      const handleDelete = () => {
-
-      axios
-      .delete("http://localhost:3000/emergency/:emergencyId", {
-      })
-      .then((response) => {
-       console.log(response);
-        
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+      });};
+      const handleDelete = (id) => {
+        const token = localStorage.getItem("authToken");
+    
+        axios
+          .delete("http://localhost:3000/emergency/" + id, {
+            headers: { authorization: `Bearer ${token}` },
+          })
+          .then(()=>{
+           const filteredEmergency=Emergency.filter((element)=>element._id !==id)
+           setEmergency(filteredEmergency)
+          })
+          .catch((error) => console.log(error));
     
   };
   useEffect(() => {
@@ -47,11 +47,7 @@ function Emergency() {
         {Emergency &&
           Emergency.map((item, i) => {
             const date = new Date(item.inDate);
-            const dateFormatted = date.toLocaleTimeString(undefined, {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit",
-            });
+            const dateFormatted = date.toDateString()
 
             return (
               <div key={i}>
@@ -59,7 +55,7 @@ function Emergency() {
                 <p>{item.income}</p>
                 <p>{dateFormatted}</p>
                 <button className="btn">Edit</button>
-                <button className="btn" onClick={handleDelete}> Delete </button>
+                <button className="btn" onClick={() => handleDelete(item._id)}> Delete </button>
 
               </div>
             );
