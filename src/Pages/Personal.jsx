@@ -34,13 +34,18 @@ function Personal() {
       <div className="personal">
         <h1>Personal expenses</h1>
         {personal &&
-          personal.map((item, i) => (
+          personal.map((item, i) => {
+            
+            const date = new Date(item.inDate)
+            const dateFormatted = date.toLocaleTimeString(undefined, {year: 'numeric', month: '2-digit', day: '2-digit'});
+
+            return (
             <div key={i}>
               <h2>{item.title}</h2>
               <p>{item.income}</p>
-              <p>{item.outDate}</p>
+              <p>{dateFormatted}</p>
             </div>
-          ))}
+          )})}
       </div>
     </>
   );
