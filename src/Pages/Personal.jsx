@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Personal() {
   const [personal, setPersonal] = useState([]);
-  const navigate = useNavigate();
   const getPersonal = () => {
     const token = localStorage.getItem("authToken");
 

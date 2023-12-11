@@ -13,10 +13,10 @@ function AddLiving() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const requestBody = {
-      income: income,
+           title: title,
+ income: income,
       outcome: outcome,
       inDate: inDate,
-      title: title,
     };
     const storedToken = localStorage.getItem("authToken");
 
@@ -25,6 +25,10 @@ function AddLiving() {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
+        setIncome("");
+        setOutcome("");
+        setInDate("");
+        setTitle("");
         navigate("/living");
         console.log(response);
       })

@@ -28,6 +28,8 @@ function EditPersonal() {
         setOutcome("");
         setInDate("");
         setTitle("");
+        navigate("/personal");
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);

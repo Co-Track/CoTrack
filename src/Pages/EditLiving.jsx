@@ -28,6 +28,8 @@ function EditLiving() {
         setOutcome("");
         setInDate("");
         setTitle("");
+        navigate("/living");
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);

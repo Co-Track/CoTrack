@@ -28,6 +28,8 @@ function EditEmergency() {
         setOutcome("");
         setInDate("");
         setTitle("");
+        navigate("/emergency");
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
