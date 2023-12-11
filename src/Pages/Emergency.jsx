@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Emergency() {
   const [Emergency, setEmergency] = useState([]);
@@ -17,23 +18,26 @@ function Emergency() {
       .then((response) => {
         setEmergency(response.data);
         console.log(response);
+        navigate("/addEmergency");
       })
       .catch((error) => {
         console.log(error);
-      });};
-      const handleDelete = (id) => {
-        const token = localStorage.getItem("authToken");
-    
-        axios
-          .delete("http://localhost:3000/emergency/" + id, {
-            headers: { authorization: `Bearer ${token}` },
-          })
-          .then(()=>{
-           const filteredEmergency=Emergency.filter((element)=>element._id !==id)
-           setEmergency(filteredEmergency)
-          })
-          .catch((error) => console.log(error));
-    
+      });
+  };
+  const handleDelete = (id) => {
+    const token = localStorage.getItem("authToken");
+
+    axios
+      .delete("http://localhost:3000/emergency/" + id, {
+        headers: { authorization: `Bearer ${token}` },
+      })
+      .then(() => {
+        const filteredEmergency = Emergency.filter(
+          (element) => element._id !== id
+        );
+        setEmergency(filteredEmergency);
+      })
+      .catch((error) => console.log(error));
   };
   useEffect(() => {
     getEmergency();
@@ -44,10 +48,14 @@ function Emergency() {
     <>
       <div className="Emergency">
         <h1>Emergency expenses</h1>
+        <Link to={`/addEmergency`}>
+          <button> Add new expense</button>
+        </Link>
+
         {Emergency &&
           Emergency.map((item, i) => {
             const date = new Date(item.inDate);
-            const dateFormatted = date.toDateString()
+            const dateFormatted = date.toDateString();
 
             return (
               <div key={i}>
@@ -55,8 +63,10 @@ function Emergency() {
                 <p>{item.income}</p>
                 <p>{dateFormatted}</p>
                 <button className="btn">Edit</button>
-                <button className="btn" onClick={() => handleDelete(item._id)}> Delete </button>
-
+                <button className="btn" onClick={() => handleDelete(item._id)}>
+                  {" "}
+                  Delete{" "}
+                </button>
               </div>
             );
           })}

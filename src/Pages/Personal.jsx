@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Personal() {
@@ -17,6 +18,7 @@ function Personal() {
       .then((response) => {
         setPersonal(response.data);
         console.log(response);
+        navigate("/addPersonal");
       })
       .catch((error) => {
         console.log(error);
@@ -48,6 +50,9 @@ function Personal() {
     <>
       <div className="personal">
         <h1>Personal expenses</h1>
+        <Link to={`/addPersonal`}>
+          <button> Add new expense</button>
+        </Link>
         {personal &&
           personal.map((item, i) => {
             const date = new Date(item.inDate);

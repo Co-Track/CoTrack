@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Living() {
   const [living, setLiving] = useState([]);
@@ -18,6 +20,7 @@ function Living() {
       .then((response) => {
         setLiving(response.data);
         console.log(response);
+        navigate("/addLiving");
       })
       .catch((error) => {
         console.log(error);
@@ -47,6 +50,9 @@ function Living() {
     <>
       <div className="living">
         <h1>Living expenses</h1>
+        <Link to={`/addLiving`}>
+          <button> Add new expense</button>
+        </Link>
         {living &&
           living.map((item, i) => {
             const date = new Date(item.inDate);
