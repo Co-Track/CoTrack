@@ -28,6 +28,7 @@ function AddEmergency() {
         setOutcome("");
         setInDate("");
         setTitle("");
+        navigate("/emergency");
       })
       .catch((error) => {
         console.log(error);
