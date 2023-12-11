@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Emergency() {
   const [Emergency, setEmergency] = useState([]);
-  const navigate = useNavigate();
   const getEmergency = () => {
     const token = localStorage.getItem("authToken");
 
@@ -22,13 +20,26 @@ function Emergency() {
       })
       .catch((error) => {
         console.log(error);
-      });
+      });}
+      const handleDelete = () => {
+
+      axios
+      .delete("http://localhost:3000/emergency/:emergencyId", {
+      })
+      .then((response) => {
+       console.log(response);
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    
   };
   useEffect(() => {
     getEmergency();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(Emergency);
+
   return (
     <>
       <div className="Emergency">
@@ -47,6 +58,9 @@ function Emergency() {
                 <h2>{item.title}</h2>
                 <p>{item.income}</p>
                 <p>{dateFormatted}</p>
+                <button className="btn">Edit</button>
+                <button className="btn" onClick={handleDelete}> Delete </button>
+
               </div>
             );
           })}

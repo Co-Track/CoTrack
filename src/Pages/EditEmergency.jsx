@@ -34,6 +34,7 @@ function EditEmergency() {
       .catch((error) => {
         console.log(error);
       });
+    
   };
 
   return (
@@ -95,4 +96,5 @@ function EditEmergency() {
     </div>
   );
 }
+
 export default EditEmergency;
