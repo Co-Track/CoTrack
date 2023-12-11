@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 function Personal() {
   const [personal, setPersonal] = useState([]);
+
   const getPersonal = () => {
     const token = localStorage.getItem("authToken");
     axios
@@ -22,6 +22,7 @@ function Personal() {
         console.log(error);
       });
   };
+
   const handleDelete = (id) => {
     const token = localStorage.getItem("authToken");
 
@@ -29,14 +30,14 @@ function Personal() {
       .delete("http://localhost:3000/personal/" + id, {
         headers: { authorization: `Bearer ${token}` },
       })
-      .then(()=>{
-       const filteredPersonal=personal.filter((element)=>element._id !==id)
-       setPersonal(filteredPersonal)
+      .then(() => {
+        const filteredPersonal = personal.filter(
+          (element) => element._id !== id
+        );
+        setPersonal(filteredPersonal);
       })
       .catch((error) => console.log(error));
-};
-
-
+  };
 
   useEffect(() => {
     getPersonal();
@@ -50,7 +51,7 @@ function Personal() {
         {personal &&
           personal.map((item, i) => {
             const date = new Date(item.inDate);
-            const dateFormatted = date.toDateString()
+            const dateFormatted = date.toDateString();
 
             return (
               <div key={i}>
