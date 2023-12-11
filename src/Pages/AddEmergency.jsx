@@ -68,6 +68,7 @@ function AddEmergency() {
           <input
             className="inputs"
             type="number"
+            placeholder="00.00"
             value={outcome}
             onChange={(e) => {
               setOutcome(e.target.value);

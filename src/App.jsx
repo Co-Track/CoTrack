@@ -13,6 +13,7 @@ import AddLiving from "./Pages/AddLiving";
 import EditEmergency from "./Pages/EditEmergency";
 import EditPersonal from "./Pages/EditPersonal";
 import EditLiving from "./Pages/EditLiving";
+import About from "./components/About";
 import "./App.css";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/editEmergency" element={<EditEmergency />} />
         <Route path="/editLiving" element={<EditLiving />} />
         <Route path="/editPersonal" element={<EditPersonal />} />
+        <Route path="/About" element={<About />} />
       </Routes>
       <Footer />
     </>
