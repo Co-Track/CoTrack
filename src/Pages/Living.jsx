@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Living() {
   const [living, setLiving] = useState([]);
@@ -35,9 +35,7 @@ function Living() {
         headers: { authorization: `Bearer ${token}` },
       })
       .then(() => {
-        const filteredLiving = living.filter(
-          (element) => element._id !== id
-        );
+        const filteredLiving = living.filter((element) => element._id !== id);
         setLiving(filteredLiving);
       })
       .catch((error) => console.log(error));
@@ -73,6 +71,11 @@ function Living() {
                   {" "}
                   Delete{" "}
                 </button>
+                <Link to={`/editLiving/${item._id}`}>
+                  <button type="submit" className="btn">
+                    Edit
+                  </button>
+                </Link>
               </div>
             );
           })}
