@@ -32,7 +32,9 @@ function Living() {
         headers: { authorization: `Bearer ${token}` },
       })
       .then(() => {
-        const filteredLiving = living.filter((element) => element._id !== id);
+        const filteredLiving = living.filter(
+          (element) => element._id !== id
+        );
         setLiving(filteredLiving);
       })
       .catch((error) => console.log(error));
