@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+
 function Emergency() {
   const [Emergency, setEmergency] = useState([]);
   const getEmergency = () => {
@@ -18,6 +19,7 @@ function Emergency() {
       .then((response) => {
         setEmergency(response.data);
         console.log(response);
+        // eslint-disable-next-line no-undef
         navigate("/addEmergency");
       })
       .catch((error) => {

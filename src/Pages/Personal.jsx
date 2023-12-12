@@ -18,6 +18,7 @@ function Personal() {
       .then((response) => {
         setPersonal(response.data);
         console.log(response);
+        // eslint-disable-next-line no-undef
         navigate("/addPersonal");
       })
       .catch((error) => {

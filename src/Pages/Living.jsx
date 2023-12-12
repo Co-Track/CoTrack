@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Living() {
@@ -20,6 +19,7 @@ function Living() {
       .then((response) => {
         setLiving(response.data);
         console.log(response);
+        // eslint-disable-next-line no-undef
         navigate("/addLiving");
       })
       .catch((error) => {
