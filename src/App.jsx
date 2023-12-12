@@ -34,7 +34,7 @@ function App() {
         <Route path="/AddEmergency" element={<AddEmergency />} />
         <Route path="/addLiving" element={<AddLiving />} />
         <Route path="/EditEmergency/:emergencyId" element={<EditEmergency />} />
-        <Route path="/editLiving" element={<EditLiving />} />
+        <Route path="/editLiving/:livingId" element={<EditLiving />} />
         <Route path="/editPersonal/:personalId" element={<EditPersonal />} />
         <Route path="/About" element={<About />} />
       </Routes>
