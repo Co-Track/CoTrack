@@ -1,6 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
+function formatDateString(inputDateString) {
+  // Create a Date object from the input string
+  let inputDate = new Date(inputDateString);
+
+  // Get the components of the date
+  let year = inputDate.getUTCFullYear();
+  let month = ("0" + (inputDate.getUTCMonth() + 1)).slice(-2);
+  let day = ("0" + inputDate.getUTCDate()).slice(-2);
+
+  // Format the date as "yyyy-MM-dd"
+  let formattedDate = year + "-" + month + "-" + day;
+
+  return formattedDate;
+}
 
 function EditPersonal() {
   const [income, setIncome] = useState("");
@@ -8,23 +23,49 @@ function EditPersonal() {
   const [inDate, setInDate] = useState("");
   const [title, setTitle] = useState("");
 
-  const navigate = useNavigate();
+  const { personalId } = useParams();
+  console.log(personalId);
 
-  const handleFormSubmit = (id, e) => {
+  const navigate = useNavigate();
+  const storedToken = localStorage.getItem("authToken");
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/personal/${personalId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setTitle(response.data.title);
+        setIncome(response.data.income);
+        setInDate(formatDateString(response.data.inDate));
+      });
+  }, []);
+
+  const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const storedToken = localStorage.getItem("authToken");
+    console.log(storedToken);
+    const formData = {
+      title,
+      inCome: income,
+      inDate: inDate,
+      outCome: outcome,
+    };
     axios
-      .put("http://localhost:3000/personal/" + id, requestBody, {
-        headers: { Authorization: `Bearer ${storedToken}` },
+      .put("http://localhost:3000/personal/" + personalId, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
       })
       .then((response) => {
         setIncome("");
         setOutcome("");
         setInDate("");
         setTitle("");
-        navigate("/personal");
         console.log(response);
+
+        navigate("/personal");
       })
       .catch((error) => {
         console.log(error);
@@ -43,8 +84,8 @@ function EditPersonal() {
             placeholder="enter the title"
             value={title}
             required={true}
-            onChange={(e) => {
-              setTitle(e.target.value);
+            onChange={(id) => {
+              setTitle(id.target.value);
             }}
           />
         </div>
@@ -55,8 +96,8 @@ function EditPersonal() {
             type="number"
             placeholder="00.00"
             value={income}
-            onChange={(e) => {
-              setIncome(e.target.value);
+            onChange={(id) => {
+              setIncome(id.target.value);
             }}
           />
         </div>
@@ -66,8 +107,8 @@ function EditPersonal() {
             className="inputs"
             type="number"
             value={outcome}
-            onChange={(e) => {
-              setOutcome(e.target.value);
+            onChange={(id) => {
+              setOutcome(id.target.value);
             }}
           />
         </div>
@@ -77,18 +118,14 @@ function EditPersonal() {
             className="inputs"
             type="date"
             value={inDate}
-            onChange={(e) => {
-              setInDate(e.target.value);
+            onChange={(id) => {
+              setInDate(id.target.value);
             }}
           />
         </div>
         <div>
           <br></br>
-          <button
-            type="submit"
-            className="addBtn"
-            onChange={(e) => handleFormSubmit(item._id, e)}
-          >
+          <button type="submit" className="addBtn">
             Edit
           </button>
         </div>

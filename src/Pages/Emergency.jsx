@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-
 function Emergency() {
   const [Emergency, setEmergency] = useState([]);
   const getEmergency = () => {
@@ -45,6 +44,7 @@ function Emergency() {
     getEmergency();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  console.log(Emergency);
 
   return (
     <>

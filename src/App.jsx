@@ -17,7 +17,6 @@ import About from "./components/About";
 import HomePage from "./Pages/HomePage";
 import "./App.css";
 
-
 function App() {
   return (
     <>
@@ -36,7 +35,7 @@ function App() {
         <Route path="/addLiving" element={<AddLiving />} />
         <Route path="/editEmergency" element={<EditEmergency />} />
         <Route path="/editLiving" element={<EditLiving />} />
-        <Route path="/editPersonal" element={<EditPersonal />} />
+        <Route path="/editPersonal/:personalId" element={<EditPersonal />} />
         <Route path="/About" element={<About />} />
       </Routes>
       <Footer />
