@@ -10,17 +10,12 @@ function EditPersonal() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleFormSubmit = (id, e) => {
     e.preventDefault();
-    const requestBody = {
-      income: income,
-      outcome: outcome,
-      inDate: inDate,
-      title: title,
-    };
+
     const storedToken = localStorage.getItem("authToken");
     axios
-      .put("http://localhost:3000/personal/:personalId", requestBody, {
+      .put("http://localhost:3000/personal/" + id, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -38,7 +33,7 @@ function EditPersonal() {
 
   return (
     <div className="inputs-container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <div>
           <h1>Edit an existing expense</h1>
           <label>Title</label>
@@ -89,7 +84,13 @@ function EditPersonal() {
         </div>
         <div>
           <br></br>
-          <button className="addBtn">Edit</button>
+          <button
+            type="submit"
+            className="addBtn"
+            onChange={(e) => handleFormSubmit(item._id, e)}
+          >
+            Edit
+          </button>
         </div>
       </form>
     </div>

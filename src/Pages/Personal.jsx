@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import EditPersonal from "./EditPersonal";
 
 function Personal() {
   const [personal, setPersonal] = useState([]);
@@ -72,6 +73,15 @@ function Personal() {
                   {" "}
                   Delete{" "}
                 </button>
+                <Link to={"/editPersonal"}>
+                  <button
+                    type="submit"
+                    className="btn"
+                    onChange={() => handleFormSubmit(item._id, e)}
+                  >
+                    Edit
+                  </button>
+                </Link>
               </div>
             );
           })}
