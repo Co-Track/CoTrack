@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Personal() {
   const [personal, setPersonal] = useState([]);
@@ -49,24 +50,28 @@ function Personal() {
 
   return (
     <>
-      <div className="personal">
-        <h1>Personal expenses</h1>
+      <div className="container mt-4">
+        <h1 className="mb-4">Personal expenses</h1>
         <Link to={`/addPersonal`}>
           <button> Add new expense</button>
         </Link>
+        <div className="row">
         {personal &&
           personal.map((item, i) => {
             const date = new Date(item.inDate);
             const dateFormatted = date.toDateString();
 
             return (
-              <div key={i}>
-                <h2>{item.title}</h2>
-                <p>{item.income}</p>
-                <p>{dateFormatted}</p>
+              <div className="col-md-6 col-lg-4 mb-4"
+              key={i}>
+                <div className="card">
+                  <div className="card-body">
+                <h2 className="card-title">{item.title}</h2>
+                <p className="card-text" >{item.income}</p>
+                <p className="card-text">{dateFormatted}</p>
                 <button
                   type="submit"
-                  className="btn"
+                  className="btn btn-danger mr-2"
                   onClick={() => handleDelete(item._id)}
                 >
                   {" "}
@@ -77,10 +82,12 @@ function Personal() {
                     Edit
                   </button>
                 </Link>
-              </div>
+                </div>
+                </div>
+                 </div>
             );
           })}
-      </div>
+      </div></div>
     </>
   );
 }
