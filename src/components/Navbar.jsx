@@ -60,7 +60,7 @@ function Navbar() {
             </div>
           </li>
         </ul>
-        <form className="form-inline my-2 my-lg-0 ml-auto">
+        <form className="form-inline my-2 my-lg-0 ml-auto d-flex justify-content-end">
           <input
             className="form-control mr-sm-2"
             type="search"
