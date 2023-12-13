@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Emergency() {
-  const [Emergency, setEmergency] = useState([]);
+  const [emergency, setEmergency] = useState([]);
+
   const getEmergency = () => {
     const token = localStorage.getItem("authToken");
 
@@ -33,7 +34,7 @@ function Emergency() {
         headers: { authorization: `Bearer ${token}` },
       })
       .then(() => {
-        const filteredEmergency = Emergency.filter(
+        const filteredEmergency = emergency.filter(
           (element) => element._id !== id
         );
         setEmergency(filteredEmergency);
@@ -44,18 +45,18 @@ function Emergency() {
     getEmergency();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(Emergency);
+  console.log(emergency);
 
   return (
     <>
-      <div className="Emergency">
+      <div className="emergency">
         <h1>Emergency expenses</h1>
         <Link to={`/addEmergency`}>
           <button> Add new expense</button>
         </Link>
 
-        {Emergency &&
-          Emergency.map((item, i) => {
+        {emergency &&
+          emergency.map((item, i) => {
             const date = new Date(item.inDate);
             const dateFormatted = date.toDateString();
 
@@ -64,11 +65,19 @@ function Emergency() {
                 <h2>{item.title}</h2>
                 <p>{item.income}</p>
                 <p>{dateFormatted}</p>
-                <button className="btn">Edit</button>
-                <button className="btn" onClick={() => handleDelete(item._id)}>
+                <button
+                  type="submit"
+                  className="btn"
+                  onClick={() => handleDelete(item._id)}
+                >
                   {" "}
                   Delete{" "}
                 </button>
+                <Link to={`/editEmergency/${item._id}`}>
+                  <button type="submit" className="btn">
+                    Edit
+                  </button>
+                </Link>
               </div>
             );
           })}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 function formatDateString(inputDateString) {
   // Create a Date object from the input string
@@ -36,6 +36,7 @@ function EditLiving() {
       })
       .then((response) => {
         console.log(response.data);
+
         setTitle(response.data.title);
         setIncome(response.data.income);
         setInDate(formatDateString(response.data.inDate));
@@ -48,10 +49,11 @@ function EditLiving() {
     console.log(storedToken);
     const formData = {
       title,
-      inCome: income,
+      income: income,
       inDate: inDate,
-      outCome: outcome,
+      outcome: outcome,
     };
+
     axios
       .put("http://localhost:3000/living/" + livingId, formData, {
         headers: {
@@ -90,14 +92,14 @@ function EditLiving() {
           />
         </div>
         <div>
-          <label>income</label>
+          <label>Income</label>
           <input
             className="inputs"
             type="number"
             placeholder="00.00"
             value={income}
-            onChange={(id) => {
-              setIncome(id.target.value);
+            onChange={(e) => {
+              setIncome(e.target.value);
             }}
           />
         </div>
@@ -106,9 +108,10 @@ function EditLiving() {
           <input
             className="inputs"
             type="number"
+            placeholder="00.00"
             value={outcome}
-            onChange={(id) => {
-              setOutcome(id.target.value);
+            onChange={(e) => {
+              setOutcome(e.target.value);
             }}
           />
         </div>
@@ -118,8 +121,8 @@ function EditLiving() {
             className="inputs"
             type="date"
             value={inDate}
-            onChange={(id) => {
-              setInDate(id.target.value);
+            onChange={(e) => {
+              setInDate(e.target.value);
             }}
           />
         </div>
