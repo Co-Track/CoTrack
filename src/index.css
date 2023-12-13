@@ -76,28 +76,25 @@
   background: #9fa4dd;
   border-radius: 15px;
   transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
-              0 0  0 2px rgb(190, 190, 190),
-              0.3em 0.3em 1em rgba(0,0,0,0.3);
- }
- .pers-btn {
-  background-color: #5E4D81;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(190, 190, 190),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+.pers-btn {
+  background-color: #5e4d81;
   margin: auto;
-  color: #9FA4DD;
-  padding: 10px 20px; 
-  font-size: 16px; 
+  color: #9fa4dd;
+  padding: 10px 20px;
+  font-size: 16px;
 }
 .add-btn {
-  background-color: #3ECACE;
-  padding: 10px; 
-  font-size: 16px; 
+  background-color: #3ecace;
+  padding: 10px;
+  font-size: 16px;
 }
 
 .end {
   align-self: flex-end;
   display: flex;
   flex-direction: column;
-  align-items:end;
+  align-items: end;
 }
-
-  

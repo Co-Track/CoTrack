@@ -215,11 +215,7 @@ const FAQ = () => {
               <div
                 className="support-button text-center d-flex align-items-center justify-content-center mt-4 wow fadeInUp"
                 data-wow-delay="0.5s"
-              >
-                <i className="lni-emoji-sad"></i>
-                <p className="mb-0 px-2">Can't find your answers?</p>
-                <a href="#"> Contact us</a>
-              </div>
+              ></div>
             </div>
           </div>
         </div>
