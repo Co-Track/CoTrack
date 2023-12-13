@@ -34,62 +34,52 @@ function SignupPage() {
 
   return (
     <div className="container">
+      <div className="form-box">
+        <form className="form" onSubmit={handleSignupSubmit}>
+          <h1>Signup</h1>
 
-    <div className="form-box">
-      <form className="form"
-        onSubmit={handleSignupSubmit}
-      >
-            <span className="title">Sign up</span>
-            <span className="subtitle"> Start your free trial</span>
-        
-        
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={email}
-          onChange={handleEmail}
-          className="input"
-          autoComplete="off"
-          placeholder="Email"
-          required="user@cotrack.com"
-        />
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={handlePassword}
-          className="input"
-          autoComplete="off"
-          placeholder="Password"
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={handleEmail}
+            className="input"
+            autoComplete="off"
+            placeholder="Email"
+            required="user@cotrack.com"
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={handlePassword}
+            className="input"
+            autoComplete="off"
+            placeholder="Password"
+          />
 
-        />
-        
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={name}
-          onChange={handleName}
-          className="input"
-          autoComplete="off"
-          placeholder="Name"
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            onChange={handleName}
+            className="input"
+            autoComplete="off"
+            placeholder="Name"
+          />
 
-        />
+          <button type="submit">Create Account</button>
+        </form>
 
-        <button
-          type="submit"
-        >
-          Create Account
-        </button>
-      </form>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p className="mt-10 mb-2">Already have an account?</p>
-      <Link to={"/login"}> Log in</Link>
-    </div></div>
+        <p className="mt-10 mb-2">Already have an account?</p>
+        <Link to={"/login"}> Log in</Link>
+      </div>
+    </div>
   );
 }
 

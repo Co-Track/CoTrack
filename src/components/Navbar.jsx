@@ -1,28 +1,14 @@
-/*import { NavLink } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./Navbar.css";
-
-function Navbar() {
-  return (
-    <nav className="Navbar">
-      <NavLink to="/">Home</NavLink> | <NavLink to="/about">About</NavLink> |{" "}
-      <NavLink to="/Signup">Signup</NavLink> |{" "}
-      <NavLink to="/Login">Login</NavLink>{" "}
-    </nav>
-  );
-}
-
-export default Navbar;*/
 import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import logo from "../assets/IMG_0840.jpg";
 import "./Navbar.css";
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <NavLink className="navbar-brand" to="/">
-        <img src={"./assets/IMG_0840.jpg"} />
+      <NavLink className="navbar-brand" to="/" style={{ height: "100%" }}>
+        <img src={logo} style={{ height: "100%", width: "100px" }} />
       </NavLink>
       <button
         className="navbar-toggler"

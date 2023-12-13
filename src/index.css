@@ -37,3 +37,32 @@
   }
 }
 
+.footer {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 35px;
+}
+
+/* FAQ.css */
+.faq-section {
+  max-width: 600px;
+  margin: auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+/* Style for question (dt) */
+.faq-item dt {
+  font-weight: bold;
+}
+
+/* Style for answer (dd) */
+.faq-item dd {
+  margin-top: 8px;
+}
