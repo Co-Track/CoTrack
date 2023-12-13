@@ -9,7 +9,7 @@ export default MainPage;
 */
 
 import React from "react";
-import FAQ from "./FAQ";
+import FAQ from "../components/FAQ";
 
 const MainPage = () => {
   return (

@@ -15,7 +15,7 @@ import EditPersonal from "./Pages/EditPersonal";
 import EditLiving from "./Pages/EditLiving";
 import About from "./components/About";
 import HomePage from "./Pages/HomePage";
-import FAQ from "./Pages/FAQ";
+import FAQ from "./components/FAQ";
 import "./App.css";
 
 function App() {
