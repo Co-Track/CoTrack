@@ -15,7 +15,6 @@ import EditPersonal from "./Pages/EditPersonal";
 import EditLiving from "./Pages/EditLiving";
 import About from "./components/About";
 import HomePage from "./Pages/HomePage";
-import Profile from "./Pages/Profile";
 import "./App.css";
 
 function App() {
@@ -38,7 +37,6 @@ function App() {
         <Route path="/editLiving/:livingId" element={<EditLiving />} />
         <Route path="/editPersonal/:personalId" element={<EditPersonal />} />
         <Route path="/About" element={<About />} />
-        <Route path="/profile" element={<Profile/>}/>
       </Routes>
       <Footer />
     </>

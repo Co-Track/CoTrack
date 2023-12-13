@@ -50,28 +50,28 @@ function Personal() {
 
   return (
     <>
-      <div className="container mt-4">
+      <div className="container">
         <h1 className="mb-4">Personal expenses</h1>
         <Link to={`/addPersonal`}>
-          <button> Add new expense</button>
+          <button className="btn"> Add new expense</button>
         </Link>
-        <div className="row">
+        <br></br>
+        <div className="q">
         {personal &&
           personal.map((item, i) => {
             const date = new Date(item.inDate);
             const dateFormatted = date.toDateString();
 
             return (
-              <div className="col-md-6 col-lg-4 mb-4"
+              <div className="personal"
               key={i}>
-                <div className="card">
-                  <div className="card-body">
+                <div className="cardPers">
                 <h2 className="card-title">{item.title}</h2>
                 <p className="card-text" >{item.income}</p>
                 <p className="card-text">{dateFormatted}</p>
                 <button
                   type="submit"
-                  className="btn btn-danger mr-2"
+                  className="btn"
                   onClick={() => handleDelete(item._id)}
                 >
                   {" "}
@@ -84,7 +84,6 @@ function Personal() {
                 </Link>
                 </div>
                 </div>
-                 </div>
             );
           })}
       </div></div>
