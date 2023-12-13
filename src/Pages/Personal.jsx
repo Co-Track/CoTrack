@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
-
 function Personal() {
   const [personal, setPersonal] = useState([]);
 
@@ -50,43 +48,46 @@ function Personal() {
 
   return (
     <>
-      <div className="container">
-        <h1 className="mb-4">Personal expenses</h1>
+      <div className="cards">
+        <h1>Personal expenses</h1>
         <Link to={`/addPersonal`}>
-          <button className="btn"> Add new expense</button>
+          <button className="add-btn"> Add new expense</button>
         </Link>
         <br></br>
-        <div className="q">
-        {personal &&
-          personal.map((item, i) => {
-            const date = new Date(item.inDate);
-            const dateFormatted = date.toDateString();
+        <div>
+          {personal &&
+            personal.map((item, i) => {
+              const date = new Date(item.inDate);
+              const dateFormatted = date.toDateString();
 
-            return (
-              <div className="personal"
-              key={i}>
-                <div className="cardPers">
-                <h2 className="card-title">{item.title}</h2>
-                <p className="card-text" >{item.income}</p>
-                <p className="card-text">{dateFormatted}</p>
-                <button
-                  type="submit"
-                  className="btn"
-                  onClick={() => handleDelete(item._id)}
-                >
-                  {" "}
-                  Delete{" "}
-                </button>
-                <Link to={`/editPersonal/${item._id}`}>
-                  <button type="submit" className="btn">
-                    Edit
-                  </button>
-                </Link>
+              return (
+                <div className="personal" key={i}>
+                  <div className="card-shadow">
+                    <h2>{item.title}</h2>
+                    <br></br>
+                    <p>{item.income}</p>
+                    <br></br>
+                    <p>{dateFormatted}</p>
+                    <div className="end">
+                    <button
+                      type="submit"
+                      className="pers-btn"
+                      onClick={() => handleDelete(item._id)}
+                    >
+                      {" "}
+                      Delete{" "}
+                    </button>
+                    <Link to={`/editPersonal/${item._id}`}>
+                      <button type="submit" className="pers-btn">
+                        Edit
+                      </button>
+                    </Link>
+                  </div></div>
                 </div>
-                </div>
-            );
-          })}
-      </div></div>
+              );
+            })}
+        </div>
+      </div>
     </>
   );
 }
