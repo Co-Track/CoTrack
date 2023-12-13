@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 function formatDateString(inputDateString) {
   // Create a Date object from the input string
@@ -48,9 +48,9 @@ function EditPersonal() {
     console.log(storedToken);
     const formData = {
       title,
-      inCome: income,
+      income: income,
       inDate: inDate,
-      outCome: outcome,
+      outcome: outcome,
     };
     axios
       .put("http://localhost:3000/personal/" + personalId, formData, {
@@ -96,8 +96,8 @@ function EditPersonal() {
             type="number"
             placeholder="00.00"
             value={income}
-            onChange={(id) => {
-              setIncome(id.target.value);
+            onChange={(e) => {
+              setIncome(e.target.value);
             }}
           />
         </div>
@@ -107,8 +107,8 @@ function EditPersonal() {
             className="inputs"
             type="number"
             value={outcome}
-            onChange={(id) => {
-              setOutcome(id.target.value);
+            onChange={(e) => {
+              setOutcome(e.target.value);
             }}
           />
         </div>
@@ -118,8 +118,8 @@ function EditPersonal() {
             className="inputs"
             type="date"
             value={inDate}
-            onChange={(id) => {
-              setInDate(id.target.value);
+            onChange={(e) => {
+              setInDate(e.target.value);
             }}
           />
         </div>

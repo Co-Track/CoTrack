@@ -1,6 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
+function formatDateString(inputDateString) {
+  // Create a Date object from the input string
+  let inputDate = new Date(inputDateString);
+
+  // Get the components of the date
+  let year = inputDate.getUTCFullYear();
+  let month = ("0" + (inputDate.getUTCMonth() + 1)).slice(-2);
+  let day = ("0" + inputDate.getUTCDate()).slice(-2);
+
+  // Format the date as "yyyy-MM-dd"
+  let formattedDate = year + "-" + month + "-" + day;
+
+  return formattedDate;
+}
 
 function EditEmergency() {
   const [income, setIncome] = useState("");
@@ -8,38 +23,60 @@ function EditEmergency() {
   const [inDate, setInDate] = useState("");
   const [title, setTitle] = useState("");
 
-  const navigate = useNavigate();
+  const { emergencyId } = useParams();
+  console.log(emergencyId);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const requestBody = {
-      income: income,
-      outcome: outcome,
-      inDate: inDate,
-      title: title,
-    };
-    const storedToken = localStorage.getItem("authToken");
+  const navigate = useNavigate();
+  const storedToken = localStorage.getItem("authToken");
+
+  useEffect(() => {
     axios
-      .put("http://localhost:3000/emergency/:emergencyId", requestBody, {
+      .get(`http://localhost:3000/emergency/${emergencyId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        console.log(response.data);
+
+        setTitle(response.data.title);
+        setIncome(response.data.income);
+        setInDate(formatDateString(response.data.inDate));
+      });
+  }, []);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(storedToken);
+    const formData = {
+      title,
+      income: income,
+      inDate: inDate,
+      outcome: outcome,
+    };
+
+    axios
+      .put("http://localhost:3000/emergency/" + emergencyId, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
       })
       .then((response) => {
         setIncome("");
         setOutcome("");
         setInDate("");
         setTitle("");
-        navigate("/emergency");
         console.log(response);
+
+        navigate("/emergency");
       })
       .catch((error) => {
         console.log(error);
       });
-    
   };
 
   return (
     <div className="inputs-container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <div>
           <h1>Edit an existing expense</h1>
           <label>Title</label>
@@ -49,13 +86,13 @@ function EditEmergency() {
             placeholder="enter the title"
             value={title}
             required={true}
-            onChange={(e) => {
-              setTitle(e.target.value);
+            onChange={(id) => {
+              setTitle(id.target.value);
             }}
           />
         </div>
         <div>
-          <label>income</label>
+          <label>Income</label>
           <input
             className="inputs"
             type="number"
@@ -71,6 +108,7 @@ function EditEmergency() {
           <input
             className="inputs"
             type="number"
+            placeholder="00.00"
             value={outcome}
             onChange={(e) => {
               setOutcome(e.target.value);
@@ -90,7 +128,9 @@ function EditEmergency() {
         </div>
         <div>
           <br></br>
-          <button className="addBtn">Edit</button>
+          <button type="submit" className="addBtn">
+            Edit
+          </button>
         </div>
       </form>
     </div>

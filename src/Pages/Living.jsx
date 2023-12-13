@@ -53,6 +53,7 @@ function Living() {
         <Link to={`/addLiving`}>
           <button> Add new expense</button>
         </Link>
+
         {living &&
           living.map((item, i) => {
             const date = new Date(item.inDate);
