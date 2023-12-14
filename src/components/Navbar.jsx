@@ -23,8 +23,13 @@ function Navbar({ routes }) {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <NavLink className="navbar-brand" to="/" style={{ height: "100%" }}>
-        <img src={logo} style={{ height: "100%", width: "100px" }} alt="Logo" />
+      <NavLink className="navbar-brand" to="/">
+        <img
+          src={logo}
+          style={{ height: "100%", width: "100px" }}
+          alt="Logo"
+          className="tracker"
+        />
       </NavLink>
       <button
         className="navbar-toggler"

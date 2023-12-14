@@ -1,10 +1,6 @@
-
-
 .mb-4 {
   margin-bottom: 100%;
 }
-
-
 
 .card-body {
   display: flex;
@@ -20,7 +16,6 @@
   margin-bottom: 10px;
 }
 
-
 @media (max-width: 768px) {
   .card {
     width: 100%;
@@ -30,4 +25,20 @@
 
 .home-title {
   height: 100vh;
+}
+
+.inputs {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.addBtn {
+  background-color: #a35c6e;
+}
+
+.view {
+  background-color: #a35c6e;
 }

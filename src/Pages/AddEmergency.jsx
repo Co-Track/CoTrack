@@ -30,7 +30,6 @@ function AddEmergency() {
         setTitle("");
         navigate("/emergency");
         console.log(response);
-
       })
       .catch((error) => {
         console.log(error);
@@ -42,7 +41,6 @@ function AddEmergency() {
       <form onSubmit={handleSubmit}>
         <div>
           <h1>Add a new expense</h1>
-          <label>Title</label>
           <input
             className="inputs"
             type="text"
@@ -55,7 +53,6 @@ function AddEmergency() {
           />
         </div>
         <div>
-          <label>income</label>
           <input
             className="inputs"
             type="number"
@@ -67,7 +64,6 @@ function AddEmergency() {
           />
         </div>
         <div>
-          <label>Outcome</label>
           <input
             className="inputs"
             type="number"
@@ -79,7 +75,6 @@ function AddEmergency() {
           />
         </div>
         <div>
-          <label>Date</label>
           <input
             className="inputs"
             type="date"

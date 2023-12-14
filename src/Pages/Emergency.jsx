@@ -54,36 +54,42 @@ function Emergency() {
         <Link to={`/addEmergency`}>
           <button className="add"> Add new expense</button>
         </Link>
+        <div class="gap-5 d-flex flex-wrap justify-content-lg-start gap-5">
+          {emergency &&
+            emergency.map((item, i) => {
+              const date = new Date(item.inDate);
+              const dateFormatted = date.toDateString();
 
-        {emergency &&
-          emergency.map((item, i) => {
-            const date = new Date(item.inDate);
-            const dateFormatted = date.toDateString();
-
-            return (
-
-              <div key={i}>
-                              <div className="em-container">
-
-                <h1>{item.title}</h1>
-                <h3>{item.income}</h3>
-                <h6>{dateFormatted}</h6>
-                <button
-                  type="submit"
-                  className="btn"
-                  onClick={() => handleDelete(item._id)}
+              return (
+                <div
+                  className="w-full max-w-md bg-white p-6 rounded-lg shadow-md mb-6"
+                  key={i}
                 >
                   {" "}
-                  Delete{" "}
-                </button>
-                <Link to={`/editEmergency/${item._id}`}>
-                  <button type="submit" className="btn">
-                    Edit
-                  </button>
-                </Link>
-              </div></div>
-            );
-          })}
+                  <div className="d-flex flex-row justify-between items-center mb-4 ml-auto">
+                    <div className="em-container">
+                      <h2>{item.title}</h2>
+                      <p>{item.income}</p>
+                      <p>{dateFormatted}</p>
+                      <button
+                        type="submit"
+                        className="btn"
+                        onClick={() => handleDelete(item._id)}
+                      >
+                        {" "}
+                        Delete{" "}
+                      </button>
+                      <Link to={`/editEmergency/${item._id}`}>
+                        <button type="submit" className="btn">
+                          Edit
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
       </div>
     </>
   );

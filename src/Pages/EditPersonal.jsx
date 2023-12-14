@@ -78,7 +78,6 @@ function EditPersonal() {
       <form onSubmit={handleFormSubmit}>
         <div>
           <h1>Edit an existing expense</h1>
-          <label>Title</label>
           <input
             className="inputs"
             type="text"
@@ -91,7 +90,6 @@ function EditPersonal() {
           />
         </div>
         <div>
-          <label>income</label>
           <input
             className="inputs"
             type="number"
@@ -103,7 +101,6 @@ function EditPersonal() {
           />
         </div>
         <div>
-          <label>Outcome</label>
           <input
             className="inputs"
             type="number"
@@ -114,7 +111,6 @@ function EditPersonal() {
           />
         </div>
         <div>
-          <label>Date</label>
           <input
             className="inputs"
             type="date"
@@ -126,9 +122,7 @@ function EditPersonal() {
         </div>
         <div>
           <br></br>
-          <button type="submit">
-            Edit
-          </button>
+          <button type="submit">Edit</button>
         </div>
       </form>
     </div>

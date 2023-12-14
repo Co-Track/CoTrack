@@ -13,8 +13,8 @@ function AddLiving() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const requestBody = {
-           title: title,
- income: income,
+      title: title,
+      income: income,
       outcome: outcome,
       inDate: inDate,
     };
@@ -42,7 +42,6 @@ function AddLiving() {
       <form onSubmit={handleSubmit}>
         <div>
           <h1>Add a new expense</h1>
-          <label>Title</label>
           <input
             className="inputs"
             type="text"
@@ -55,7 +54,6 @@ function AddLiving() {
           />
         </div>
         <div>
-          <label>income</label>
           <input
             className="inputs"
             type="number"
@@ -67,7 +65,6 @@ function AddLiving() {
           />
         </div>
         <div>
-          <label>Outcome</label>
           <input
             className="inputs"
             type="number"
@@ -79,7 +76,6 @@ function AddLiving() {
           />
         </div>
         <div>
-          <label>Date</label>
           <input
             className="inputs"
             type="date"

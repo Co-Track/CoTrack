@@ -43,7 +43,6 @@ function AddPersonal() {
       <form onSubmit={handleSubmit}>
         <div>
           <h1>Add a new expense</h1>
-          <label>Title</label>
           <input
             className="inputs"
             type="text"
@@ -56,7 +55,6 @@ function AddPersonal() {
           />
         </div>
         <div>
-          <label>income</label>
           <input
             className="inputs"
             type="number"
@@ -68,7 +66,6 @@ function AddPersonal() {
           />
         </div>
         <div>
-          <label>Outcome</label>
           <input
             className="inputs"
             type="number"
@@ -80,7 +77,6 @@ function AddPersonal() {
           />
         </div>
         <div>
-          <label>Date</label>
           <input
             className="inputs"
             type="date"

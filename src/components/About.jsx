@@ -1,6 +1,7 @@
 const CoTrackAbout = () => {
   return (
     <nav className="about-container">
+      <br></br>
       <h2>
         Welcome to CoTrack – Your Go-To Solution for Efficient Expense Tracking!
       </h2>
@@ -59,6 +60,7 @@ const CoTrackAbout = () => {
         Thank you for choosing CoTrack as your partner in financial well-being.
         Start your journey towards financial clarity today!
       </p>
+      <br></br>
     </nav>
   );
 };

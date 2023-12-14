@@ -80,7 +80,6 @@ function EditLiving() {
       <form onSubmit={handleFormSubmit}>
         <div>
           <h1>Edit an existing expense</h1>
-          <label>Title</label>
           <input
             className="inputs"
             type="text"
@@ -93,7 +92,6 @@ function EditLiving() {
           />
         </div>
         <div>
-          <label>Income</label>
           <input
             className="inputs"
             type="number"
@@ -105,7 +103,6 @@ function EditLiving() {
           />
         </div>
         <div>
-          <label>Outcome</label>
           <input
             className="inputs"
             type="number"
@@ -117,7 +114,6 @@ function EditLiving() {
           />
         </div>
         <div>
-          <label>Date</label>
           <input
             className="inputs"
             type="date"

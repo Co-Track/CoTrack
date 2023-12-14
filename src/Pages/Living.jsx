@@ -47,44 +47,51 @@ function Living() {
   console.log(living);
 
   return (
-    <>
+    <div>
       <div className="living">
         <h1>Living expenses</h1>
         <Link to={`/addLiving`}>
           <button className="add"> Add new expense</button>
         </Link>
+        <div class="gap-5 d-flex flex-wrap justify-content- gap-5">
+          {living &&
+            living.map((item, i) => {
+              const date = new Date(item.inDate);
+              const dateFormatted = date.toDateString();
 
-        {living &&
-          living.map((item, i) => {
-            const date = new Date(item.inDate);
-            const dateFormatted = date.toDateString();
-
-            return (
-              // eslint-disable-next-line react/jsx-key
-              <div className="fl-container">
-
-              <div key={i}>
-                <h2>{item.title}</h2>
-                <p>{item.income}</p>
-                <p>{dateFormatted}</p>
-                <button
-                  type="submit"
-                  className="btn"
-                  onClick={() => handleDelete(item._id)}
+              return (
+                <div
+                  className="w-full max-w-md bg-white p-6 rounded-lg shadow-md mb-6"
+                  key={i}
                 >
-                  {" "}
-                  Delete{" "}
-                </button>
-                <Link to={`/editLiving/${item._id}`}>
-                  <button type="submit" className="btn">
-                    Edit
-                  </button>
-                </Link>
-              </div></div>
-            );
-          })}
+                  <div className="d-flex flex-row justify-between items-center mb-4 ml-auto">
+                    <div className="fl-container">
+                      <div key={i}>
+                        <h2>{item.title}</h2>
+                        <p>{item.income}</p>
+                        <p>{dateFormatted}</p>
+                        <button
+                          type="submit"
+                          className="btn"
+                          onClick={() => handleDelete(item._id)}
+                        >
+                          {" "}
+                          Delete{" "}
+                        </button>
+                        <Link to={`/editLiving/${item._id}`}>
+                          <button type="submit" className="btn">
+                            Edit
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 

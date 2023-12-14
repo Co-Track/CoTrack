@@ -79,7 +79,6 @@ function EditEmergency() {
       <form onSubmit={handleFormSubmit}>
         <div>
           <h1>Edit an existing expense</h1>
-          <label>Title</label>
           <input
             className="inputs"
             type="text"
@@ -92,7 +91,6 @@ function EditEmergency() {
           />
         </div>
         <div>
-          <label>Income</label>
           <input
             className="inputs"
             type="number"
@@ -104,7 +102,6 @@ function EditEmergency() {
           />
         </div>
         <div>
-          <label>Outcome</label>
           <input
             className="inputs"
             type="number"
@@ -116,7 +113,6 @@ function EditEmergency() {
           />
         </div>
         <div>
-          <label>Date</label>
           <input
             className="inputs"
             type="date"
