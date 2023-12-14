@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -125,7 +126,7 @@ function EditPersonal() {
         </div>
         <div>
           <br></br>
-          <button type="submit" className="addBtn">
+          <button type="submit">
             Edit
           </button>
         </div>

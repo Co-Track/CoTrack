@@ -51,7 +51,7 @@ function Living() {
       <div className="living">
         <h1>Living expenses</h1>
         <Link to={`/addLiving`}>
-          <button> Add new expense</button>
+          <button className="add"> Add new expense</button>
         </Link>
 
         {living &&
@@ -60,6 +60,9 @@ function Living() {
             const dateFormatted = date.toDateString();
 
             return (
+              // eslint-disable-next-line react/jsx-key
+              <div className="fl-container">
+
               <div key={i}>
                 <h2>{item.title}</h2>
                 <p>{item.income}</p>
@@ -77,7 +80,7 @@ function Living() {
                     Edit
                   </button>
                 </Link>
-              </div>
+              </div></div>
             );
           })}
       </div>

@@ -52,7 +52,7 @@ function Emergency() {
       <div className="emergency">
         <h1>Emergency expenses</h1>
         <Link to={`/addEmergency`}>
-          <button> Add new expense</button>
+          <button className="add"> Add new expense</button>
         </Link>
 
         {emergency &&
@@ -61,10 +61,13 @@ function Emergency() {
             const dateFormatted = date.toDateString();
 
             return (
+
               <div key={i}>
-                <h2>{item.title}</h2>
-                <p>{item.income}</p>
-                <p>{dateFormatted}</p>
+                              <div className="em-container">
+
+                <h1>{item.title}</h1>
+                <h3>{item.income}</h3>
+                <h6>{dateFormatted}</h6>
                 <button
                   type="submit"
                   className="btn"
@@ -78,7 +81,7 @@ function Emergency() {
                     Edit
                   </button>
                 </Link>
-              </div>
+              </div></div>
             );
           })}
       </div>
