@@ -98,3 +98,7 @@
   flex-direction: column;
   align-items: end;
 }
+
+.home-title {
+  height: 100vh;
+}
