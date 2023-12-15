@@ -32,7 +32,7 @@ function EditPersonal() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/personal/${personalId}`, {
+      .get(import.meta.env.VITE_API_URL + `/personal/${personalId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -54,7 +54,7 @@ function EditPersonal() {
       outcome: outcome,
     };
     axios
-      .put("http://localhost:3000/personal/" + personalId, formData, {
+      .put(import.meta.env.VITE_API_URL + "/personal/" + personalId, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },

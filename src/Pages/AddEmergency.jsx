@@ -20,7 +20,7 @@ function AddEmergency() {
     };
     const storedToken = localStorage.getItem("authToken");
     axios
-      .post("http://localhost:3000/emergency", requestBody, {
+      .post(import.meta.env.VITE_API_URL + "/emergency", requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

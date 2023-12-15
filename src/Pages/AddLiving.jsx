@@ -21,7 +21,7 @@ function AddLiving() {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post("http://localhost:3000/living", requestBody, {
+      .post(import.meta.env.VITE_API_URL + "/living", requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

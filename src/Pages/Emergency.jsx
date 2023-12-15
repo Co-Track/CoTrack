@@ -10,7 +10,7 @@ function Emergency() {
 
     axios
       .get(
-        "http://localhost:3000/emergency",
+        import.meta.env.VITE_API_URL + "/emergency",
 
         {
           headers: { authorization: `Bearer ${token}` },
@@ -30,7 +30,7 @@ function Emergency() {
     const token = localStorage.getItem("authToken");
 
     axios
-      .delete("http://localhost:3000/emergency/" + id, {
+      .delete(import.meta.env.VITE_API_URL + "/emergency/" + id, {
         headers: { authorization: `Bearer ${token}` },
       })
       .then(() => {

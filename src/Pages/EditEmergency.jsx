@@ -31,7 +31,7 @@ function EditEmergency() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/emergency/${emergencyId}`, {
+      .get(import.meta.env.VITE_API_URL + `/emergency/${emergencyId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -55,11 +55,15 @@ function EditEmergency() {
     };
 
     axios
-      .put("http://localhost:3000/emergency/" + emergencyId, formData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      })
+      .put(
+        import.meta.env.VITE_API_URL + "/emergency/" + emergencyId,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        }
+      )
       .then((response) => {
         setIncome("");
         setOutcome("");

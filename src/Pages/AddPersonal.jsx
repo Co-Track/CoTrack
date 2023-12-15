@@ -22,7 +22,7 @@ function AddPersonal() {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post("http://localhost:3000/personal", requestBody, {
+      .post(import.meta.env.VITE_API_URL + "/personal", requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

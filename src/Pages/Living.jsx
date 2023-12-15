@@ -10,7 +10,7 @@ function Living() {
 
     axios
       .get(
-        "http://localhost:3000/living",
+        import.meta.env.VITE_API_URL + "/living",
 
         {
           headers: { authorization: `Bearer ${token}` },
@@ -31,7 +31,7 @@ function Living() {
     const token = localStorage.getItem("authToken");
 
     axios
-      .delete("http://localhost:3000/living/" + id, {
+      .delete(import.meta.env.VITE_API_URL + "/living/" + id, {
         headers: { authorization: `Bearer ${token}` },
       })
       .then(() => {

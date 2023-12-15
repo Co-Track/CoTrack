@@ -8,7 +8,7 @@ function Personal() {
     const token = localStorage.getItem("authToken");
     axios
       .get(
-        "http://localhost:3000/personal",
+        import.meta.env.VITE_API_URL + "/personal",
 
         {
           headers: { authorization: `Bearer ${token}` },
@@ -29,7 +29,7 @@ function Personal() {
     const token = localStorage.getItem("authToken");
 
     axios
-      .delete("http://localhost:3000/personal/" + id, {
+      .delete(import.meta.env.VITE_API_URL + "/personal/" + id, {
         headers: { authorization: `Bearer ${token}` },
       })
       .then(() => {
