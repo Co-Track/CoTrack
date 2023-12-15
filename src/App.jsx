@@ -6,7 +6,6 @@ import Personal from "./Pages/Personal";
 import Emergency from "./Pages/Emergency";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
-import Footer from "./components/Footer";
 import AddPersonal from "./Pages/AddPersonal";
 import AddEmergency from "./Pages/AddEmergency";
 import AddLiving from "./Pages/AddLiving";
@@ -63,7 +62,6 @@ function App() {
           element={<SearchResult routes={routes} />}
         /> */}
       </Routes>
-      <Footer />
     </>
   );
 }
