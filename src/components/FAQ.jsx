@@ -94,7 +94,8 @@ const FAQ = () => {
                         To add an expense, navigate to the "Add Expense" section
                         and enter the necessary details such as the amount,
                         category, and the date. Click the "Add" button to record
-                        the expense.{" "}
+                        the expense.Please note that you need to have an account
+                        to access and record expenses.{" "}
                       </p>
                     </div>
                   </div>
