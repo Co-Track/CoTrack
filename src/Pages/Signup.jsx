@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { GoogleLogin } from "react-google-login"; // Import GoogleLogin component
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL; // Ensure this points to your backend API URL
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -18,7 +19,6 @@ function SignupPage() {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    // Create an object representing the request body
     const requestBody = { email, password, name };
 
     axios
@@ -30,6 +30,25 @@ function SignupPage() {
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
+  };
+
+  const handleGoogleLoginSuccess = (response) => {
+    // Handle successful Google login
+    const { tokenId } = response;
+    axios
+      .post(`${API_URL}/auth/google`, { tokenId })
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
+  };
+
+  const handleGoogleLoginFailure = (error) => {
+    // Handle Google login failure
+    console.error("Google login error:", error);
   };
 
   return (
@@ -47,7 +66,7 @@ function SignupPage() {
             className="input"
             autoComplete="off"
             placeholder="Email"
-            required="user@cotrack.com"
+            required
           />
           <input
             type="password"
@@ -58,6 +77,7 @@ function SignupPage() {
             className="input"
             autoComplete="off"
             placeholder="Password"
+            required
           />
 
           <input
@@ -69,6 +89,7 @@ function SignupPage() {
             className="input"
             autoComplete="off"
             placeholder="Name"
+            required
           />
 
           <button type="submit">Create Account</button>
@@ -77,7 +98,16 @@ function SignupPage() {
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <p className="mt-10 mb-2">Already have an account?</p>
-        <Link to={"/login"}> Log in</Link>
+        <Link to={"/login"}>Log in</Link>
+
+        {/* Google SSO button */}
+        <GoogleLogin
+          clientId="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com" // Replace with your Google Client ID
+          buttonText="Sign in with Google"
+          onSuccess={handleGoogleLoginSuccess}
+          onFailure={handleGoogleLoginFailure}
+          cookiePolicy={"single_host_origin"}
+        />
       </div>
     </div>
   );
