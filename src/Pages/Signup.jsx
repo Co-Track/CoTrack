@@ -102,8 +102,7 @@ function SignupPage() {
 
         {/* Google SSO button */}
         <GoogleLogin
-          clientId="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com" // Replace with your Google Client ID
-          buttonText="Sign in with Google"
+          clientId="254377218393-77l212k5736ue5c9d2k4i1p226cu7jbv.apps.googleusercontent.com.apps.googleusercontent.com" // Replace with your Google Client ID
           onSuccess={handleGoogleLoginSuccess}
           onFailure={handleGoogleLoginFailure}
           cookiePolicy={"single_host_origin"}
