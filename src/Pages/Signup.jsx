@@ -33,12 +33,11 @@ function SignupPage() {
   };
 
   const handleGoogleLoginSuccess = (response) => {
-    // Handle successful Google login
     const { tokenId } = response;
     axios
       .post(`${API_URL}/auth/google`, { tokenId })
       .then(() => {
-        navigate("/login");
+        navigate("/HomePage");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -47,7 +46,6 @@ function SignupPage() {
   };
 
   const handleGoogleLoginFailure = (error) => {
-    // Handle Google login failure
     console.error("Google login error:", error);
   };
 
@@ -56,7 +54,6 @@ function SignupPage() {
       <div className="form-box">
         <form className="form" onSubmit={handleSignupSubmit}>
           <h1>Signup</h1>
-
           <input
             type="email"
             name="email"
@@ -79,7 +76,6 @@ function SignupPage() {
             placeholder="Password"
             required
           />
-
           <input
             type="text"
             name="name"
@@ -91,22 +87,20 @@ function SignupPage() {
             placeholder="Name"
             required
           />
-
           <button type="submit">Create Account</button>
         </form>
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <p className="mt-10 mb-2">Already have an account?</p>
-        <Link to={"/login"}>Log in</Link>
-
-        {/* Google SSO button */}
         <GoogleLogin
-          clientId="254377218393-77l212k5736ue5c9d2k4i1p226cu7jbv.apps.googleusercontent.com.apps.googleusercontent.com" // Replace with your Google Client ID
+          clientId="254377218393-77l212k5736ue5c9d2k4i1p226cu7jbv.apps.googleusercontent.com"
           onSuccess={handleGoogleLoginSuccess}
           onFailure={handleGoogleLoginFailure}
           cookiePolicy={"single_host_origin"}
         />
+        <br />
+        <Link to="/login">Log in</Link>
       </div>
     </div>
   );
